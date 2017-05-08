@@ -1,0 +1,19 @@
+#########################
+## FUNCTIONS
+#########################
+
+initBackglass	KEYWORD2
+readSensor	KEYWORD2
+setLED	KEYWORD2
+
+#########################
+## CONSTANTS
+#########################
+
+RAMP	LITERAL1
+LOSE	LITERAL1
+FLIP_L	LITERAL1
+FLIP_R	LITERAL1
+BUMP_0	LITERAL1
+BUMP_1	LITERAL1
+BUMP_2	LITERAL1

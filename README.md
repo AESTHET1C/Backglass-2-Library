@@ -1,4 +1,4 @@
-# Backglass 2 Library
+# Backglass 2 User Library
 
 ## About
 
@@ -6,11 +6,11 @@
 
 ## API
 
-`void initPinball()` – Starts up behind-the-scenes code for the Backglass 2 and configures necessary peripherals. This must be called at the top of `void setup()`.
+`void initBackglass()` – Starts up behind-the-scenes code for the Backglass 2 and configures necessary peripherals. This must be called at the top of `void setup()`.
 
 ### Sensors and LEDs
 
-`bool readSensor(byte sensor)` – Reads and returns the specified sensor. Valid arguments are:
+`bool readSensor(sensor_t sensor)` – Reads and returns the specified sensor. Valid arguments are:
 
 * RAMP
 * LOSE
@@ -20,7 +20,7 @@
 * BUMP_1
 * BUMP_2
 
-`void setLED(byte led, bool state)` – Sets the specified LED to either on or off. Valid arguments are:
+`void setLED(led_t led, bool state)` – Sets the specified LED to either on or off. Valid arguments are:
 
 * BUMP_0
 * BUMP_1
@@ -69,3 +69,5 @@
 ### Timing
 
 `long getMillis()` – Returns the number of elapsed milliseconds since power-on. Alias of Arduino's `millis()` function.
+
+`long delayMillis()` – Delays for the given number of milliseconds, blocking other code from running. Should be used sparingly. Alias of Arduino's `delay()` function.
