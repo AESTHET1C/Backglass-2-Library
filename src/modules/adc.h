@@ -28,7 +28,7 @@ const byte LOSE_SENSE_CHANNEL = 7;
 void initADC();
 /*
  * Sets up the ADC interrupt and conversion
- * Must be called at startup
+ * Should be called at startup
  */
 
 

@@ -12,9 +12,9 @@ void initIO() {
 bool readSensor(sensor_t sensor) {
 	switch sensor {
 		case RAMP:
-			return (rampSenseValue <= RAMP_SENSE_THRESH);
+			return (Ramp_Sense_Value <= RAMP_SENSE_THRESH);
 		case LOSE:
-			return (loseSenseValue <= LOSE_SENSE_THRESH);
+			return (Lose_Sense_Value <= LOSE_SENSE_THRESH);
 		case FLIP_L:
 			return (((PORTD >> FLIP_L_PIN) & 1) ? true : false);
 		case FLIP_R:

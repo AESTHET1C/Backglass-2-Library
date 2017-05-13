@@ -49,13 +49,13 @@ typedef enum {
 	BUMP_0 = 4,
 	BUMP_1 = 5,
 	BUMP_2 = 6
-} sensor_t
+} sensor_t;
 
 typedef enum {
 	BUMP_0 = 0,
 	BUMP_1 = 1,
 	BUMP_2 = 2
-} led_t
+} led_t;
 
 
 /////////////////////////
