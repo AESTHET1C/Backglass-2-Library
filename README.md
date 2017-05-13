@@ -30,15 +30,15 @@
 
 `void setMotor(bool state)` – Sets the motor to either on or off.
 
-`void changeMotorSpeed(byte speed)` – Changes the speed at which the motor turns. The default value is 127.
+`void changeMotorSpeed(uint8_t speed)` – Changes the speed at which the motor turns. The default value is 127.
 
 ### Speaker
 
-`void playAudio(byte audio_clip)` – Starts playback of the specified audio clip. Included audio clips are:
+`void playAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip. Included audio clips are:
 
-* STARTUP_SOUND
+* VECTREX
 
-`void loopAudio(byte audio_clip)` – Starts playback of the specified audio clip and endlessly loops. Valid arguments are identical to `playAudio()`.
+`void loopAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip and endlessly loops. Valid arguments are identical to `playAudio()`.
 
 `void stopAudio()` – Stops all audio playback, including looping clips.
 
@@ -46,17 +46,19 @@
 
 ### Display
 
-`void displayNumber(int number)` – Displays a number with leading zeros. Range is limited from -999 to +9999.
+`void clearDisplay()` – Clears the display and stops any scrolling text.
 
+`void displayNumber(int number)` – Displays a number with leading zeros. Range is limited from -999 to +9999.
 `void displayNumber(int number, bool leading_zeros)` – Displays a number, with the option for leading zeros. Range is limited from -999 to +9999.
 
 `void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling.
 
-`void clearDisplay()` – Clears the display and stops any scrolling text.
+`void displayNumberOfBalls(byte balls) – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
+
+`void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().
+`void setDecimalPoints(byte decimal_data) – Overrides the four decimal points. The override is cancelled upon calling clearDisplay(). LSB is right-most decimal point.
 
 `int getRemainingTextCharacters()` – Returns the remaining number of characters to scroll.
-
-**TODO** Decimal-point control functions
 
 ### Serial
 
