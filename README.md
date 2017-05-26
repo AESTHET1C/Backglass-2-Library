@@ -53,10 +53,10 @@
 
 `void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling.
 
-`void displayNumberOfBalls(byte balls) – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
+`void displayNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
 
 `void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().
-`void setDecimalPoints(byte decimal_data) – Overrides the four decimal points. The override is cancelled upon calling clearDisplay(). LSB is right-most decimal point.
+`void setDecimalPoints(byte decimal_data)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay(). LSB is right-most decimal point.
 
 `int getRemainingTextCharacters()` – Returns the remaining number of characters to scroll.
 
