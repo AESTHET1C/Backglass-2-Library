@@ -9,6 +9,8 @@
  * Data is in the following bit format:
  *
  * A B C D E F G DP
+ *
+ * Written by Alex Tavares <tavaresa13@gmail.com>
  */
 
 #ifndef ascii_inc

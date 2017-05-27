@@ -2,8 +2,8 @@
  *
  * Alternatingly reads ADC channels of ramp and lose sensor and updates status variables
  *
- * Updating of each channel happens at approximately 125 kHz. The variables "rampSenseValue" and
- * "loseSenseValue" give the most up-to-date readings with 8-bit precision.
+ * Updating of each channel happens at approximately 125 kHz. The variables "Ramp_Sense_Value" and
+ * "Lose_Sense_Value" give the most up-to-date readings with 8-bit precision.
  *
  * Do not use Arduino's analogRead() function with this; code may break.
  *
