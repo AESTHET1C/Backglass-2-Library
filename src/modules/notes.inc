@@ -2,11 +2,13 @@
  *
  * Enumerates note frequencies and durations for use by audio functions
  *
+ * Note duration naming is based upon an assumption of ~114 BPM with x/4 time.
+ *
  * Written by Alex Tavares <tavaresa13@gmail.com>
  */
 
-#ifndef notes
-#define notes
+#ifndef notes_inc
+#define notes_inc
 
 // Notes
 const uint8_t REST =     0;

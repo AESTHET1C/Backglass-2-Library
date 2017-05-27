@@ -1,3 +1,19 @@
+/* Ascii digit data
+ *
+ * Allows for lookup of digit information for a representation of an ascii character on a
+ * 7-segment display
+ *
+ * Characters lower than and including ascii "space" are assumed blank and are not included.
+ * Extended ascii characters are also not included.
+ *
+ * Data is in the following bit format:
+ *
+ * A B C D E F G DP
+ */
+
+#ifndef ascii_inc
+#define ascii_inc
+
 const byte ASCII_TABLE_OFFSET = 33;
 
 const PROGMEM byte ASCII_DATA[] =
@@ -98,3 +114,5 @@ const PROGMEM byte ASCII_DATA[] =
 	B10000000,
 	0
 };
+
+#endif
