@@ -32,26 +32,27 @@ ISR (TWI_vect) {
 				// Send data byte
 				TWDR = TWI_Queue_Data[TWI_Queue_Pointer++];
 				break;
-			default:                                            // Some form of error
-				if (TWI_Queue_Pointer > 0) {                      // Repeat last data byte
+			default:  // Some form of error
+				if (TWI_Queue_Pointer > 0) {                       // Repeat last data byte
 					TWDR = TWI_Queue_Data[TWI_Queue_Pointer++ - 1];
 				}
-				else {                                            // Restart transmission
+				else {                                             // Restart transmission
 					TWI_Queue_Pointer = 0;
 					TWCR |= (1 << TWSTA);
 				}
 				break;
 		}
 	}
-	else if (TWI_Queue_Pointer == TWI_Queue_Length) { // Stop transmission
+	else if (TWI_Queue_Pointer == TWI_Queue_Length) {  // Stop transmission
 		TWCR |= (1 << TWSTO);
 		TWI_Queue_Pointer += 1;
 	}
-	else {                                            // Power down TWI
+	else {                                             // Power down TWI
 		PRR |= (1 << PRTWI);
 		TWCR &= ~(1 << TWEN);
 	}
 
-	TWCR |= (1 << TWINT);   // Clear interrupt flag to begin sending byte
+	// Clear interrupt flag to begin sending byte
+	TWCR |= (1 << TWINT);
 	return;
 }
