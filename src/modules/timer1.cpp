@@ -1,8 +1,10 @@
 #include "timer1.h"
+#include "twi.h"
 #include "motor.h"
 
 void initTimer1() {
 
+	initTWI();
 	initMotor();
 
 	// Configure and enable Timer1 unit
@@ -16,20 +18,16 @@ ISR(TIMER1_OVF_vect) {
 	// Calculate new note values
 	// Queue TWI packet
 
-	/*
-	volatile bool Voice_Update = false;
+	// Begin the I2C transmission so we can send first byte as soon as possible
+	beginI2CTransmission();
 
-	uint8_t TWI_Packet_Array[12];
-	byte TWI_Packet_Length = 0;
-	byte TWI_Packet_Pointer = 0;
-	*/
-
-	// Send audio channel notes
+	// queue audio channel notes
 	for (byte channel = 0; channel < NUMBER_OF_GLOBAL_CHANNELS; channel++) {
 		// TODO
 	}
+	TWI_Queue_Length = 4;
 
-	// Handle scrolling text
+	// Handle text scrolling
 	if (Display_Queue_Active) {
 		if (Display_Queue_Remaining-- == 0) {
 
@@ -52,21 +50,23 @@ ISR(TIMER1_OVF_vect) {
 		}
 	}
 
-	// [Potentially] send audio channel voices
+	// [Potentially] queue audio channel voices
 	if (Voice_Update | Display_Update) {
 		for (byte channel = 0; channel < NUMBER_OF_GLOBAL_CHANNELS; channel++) {
 			// TODO
 		}
+		TWI_Queue_Length += 4;
 	}
 
-	// [Potentially] send display data
+	// [Potentially] queue display data
 	if (Display_Update) {
 		for (byte digit = 0; digit < NUMBER_OF_DIGITS; digit++) {
 			uint8_t Temp_Digit = Display_Data[digit];
 			if (Display_Decimal_Override) {
 				Temp_Digit = ((Temp_Digit & 0xFE) | (Decimal_Data[digit] ? 1 : 0));
 			}
-			TWI_Packet_Array[(NUMBER_OF_GLOBAL_CHANNELS + NUMBER_OF_DISPLAY_DIGITS) + digit] = Temp_Digit;
+			TWI_Queue_Data[(NUMBER_OF_GLOBAL_CHANNELS + NUMBER_OF_DISPLAY_DIGITS) + digit] = Temp_Digit;
 		}
+		TWI_Queue_Length += 4;
 	}
 }
