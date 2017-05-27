@@ -8,7 +8,6 @@
 #ifndef backglass
 #define backglass
 
-
 /////////////////////////
 // AVAILABLE FUNCTIONS
 /////////////////////////
@@ -17,7 +16,8 @@ void initBackglass();
 /*
  * Initializes all Backglass 2 modules
  * Must be called at start of setup()
+ *
+ * Also disables SPI and Timer2 devices to save power.
  */
-
 
 #endif
