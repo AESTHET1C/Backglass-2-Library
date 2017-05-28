@@ -1,17 +1,17 @@
 #include "display.h"
 #include "ascii.inc"
 
-// Display structure
+// Display structure variables
 volatile bool Display_Update = false;
 volatile bool Display_Decimal_Override = false;
 volatile uint8_t Display_Data[NUMBER_OF_DISPLAY_DIGITS] = {0, 0, 0, 0};
 volatile bool Decimal_Data[NUMBER_OF_DISPLAY_DIGITS] = {false, false, false, false};
 
-// Scrolling metadata
+// Scrolling metadata variables
 byte Display_Scroll_Delay = 0;
 volatile byte Display_Scroll_Remaining = 0;
 
-// Queue structure
+// Queue structure variables
 volatile bool Display_Queue_Active = false;
 volatile uint8_t Display_Queue_Data[DISPLAY_QUEUE_LENGTH];
 unsigned int Display_Queue_Length = 0;
@@ -116,7 +116,7 @@ void displayText(char text[], byte scroll_speed) {
 		while(Current_Character != NULL) {
 
 			// Map input ascii text to display data and add to display queue array
-			if ((Current_Character < ASCII_TABLE_OFFSET) | (Current_Character > 0xFF)) {
+			if ((Current_Character < ASCII_TABLE_OFFSET) || (Current_Character > 0xFF)) {
 				Display_Queue_Data[Display_Queue_Pointer] = 0;
 			}
 			else {
@@ -169,7 +169,10 @@ void displayNumberOfBalls(byte balls) {
 
 void setDecimalPoints(bool a, bool b, bool c, bool d) {
 	cli();
-	Decimal_Data = {a, b, c, d};
+	Decimal_Data[0] = a;
+	Decimal_Data[1] = b;
+	Decimal_Data[2] = c;
+	Decimal_Data[3] = d;
 	sei();
 	Display_Decimal_Override = true;
 	Display_Update = true;
@@ -177,13 +180,10 @@ void setDecimalPoints(bool a, bool b, bool c, bool d) {
 }
 
 void setDecimalPoints(byte decimal_data) {
-	bool a = ((decimal_data & 0x01) > 0);
-	decimal_data = decimal_data >> 1;
-	bool b = ((decimal_data & 0x01) > 0);
-	decimal_data = decimal_data >> 1;
-	bool c = ((decimal_data & 0x01) > 0);
-	decimal_data = decimal_data >> 1;
-	bool d = ((decimal_data & 0x01) > 0);
+	bool a = ((decimal_data & B00000001) > 0);
+	bool b = ((decimal_data & B00000010) > 0);
+	bool c = ((decimal_data & B00000100) > 0);
+	bool d = ((decimal_data & B00001000) > 0);
 	return setDecimalPoints(a, b, c, d);
 }
 
