@@ -1,5 +1,9 @@
-/*
+/* Display Module
  *
+ * TODO
+ * Documentation
+ *
+ * Written by Alex Tavares <tavaresa13@gmail.com>
  */
 
 /////////////////////////

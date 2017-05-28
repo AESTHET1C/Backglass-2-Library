@@ -1,10 +1,13 @@
 #include "timer1.h"
 #include "twi.h"
+#include "audio.h"
+#include "display.h"
 #include "motor.h"
 
 void initTimer1() {
 
 	initTWI();
+	initAudio();
 	initMotor();
 
 	// Configure and enable Timer1 unit
@@ -14,16 +17,26 @@ void initTimer1() {
 }
 
 ISR(TIMER1_OVF_vect) {
-	// TODO
-	// Calculate new note values
-	// Queue TWI packet
 
 	// Begin the I2C transmission so we can send first byte as soon as possible
 	beginI2CTransmission();
 
-	// queue audio channel notes
-	for (byte channel = 0; channel < NUMBER_OF_GLOBAL_CHANNELS; channel++) {
-		// TODO
+	// Queue audio channel notes
+	for (byte Channel = 0; Channel < NUMBER_OF_CHANNELS; Channel++) {
+		if ((Channel_Enabled_Array[Channel]) && (Channel_Note_Remaining_Array[Channel]-- == 0)){
+			TWI_Queue_Data[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]++);
+			Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]++);
+			if ((Channel_Note_Remaining_Array[Channel]-- == 0) && (TWI_Queue_Data[Channel] == 0)) {
+				if (Channel_Repeat_Array[Channel]) {
+					Channel_Pointer_Array[Channel] = Channel_Next_Pointer_Array[Channel];
+					TWI_Queue_Data[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]);
+					Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel])
+				}
+				else {
+					Channel_Enabled_Array[Channel] = false;
+				}
+			}
+		}
 	}
 	TWI_Queue_Length = 4;
 
@@ -50,23 +63,23 @@ ISR(TIMER1_OVF_vect) {
 		}
 	}
 
-	// [Potentially] queue audio channel voices
-	if (Voice_Update | Display_Update) {
-		for (byte channel = 0; channel < NUMBER_OF_GLOBAL_CHANNELS; channel++) {
-			// TODO
+	// Queue audio channel voices if needed
+	if (Voice_Update || Display_Update) {
+		TWI_Queue_Length += 4;
+		Voice_Update = false;
+	}
+
+	// Queue display data if needed
+	if (Display_Update) {
+		for (byte Digit = 0; Digit < NUMBER_OF_DIGITS; Digit++) {
+			uint8_t Temp_Digit = Display_Data[Digit];
+			if (Display_Decimal_Override) {
+				Temp_Digit = ((Temp_Digit & 0xFE) | (Decimal_Data[Digit] ? 1 : 0));
+			}
+			TWI_Queue_Data[TWI_QUEUE_DISPLAY_OFFSET + Digit] = Temp_Digit;
 		}
 		TWI_Queue_Length += 4;
 	}
 
-	// [Potentially] queue display data
-	if (Display_Update) {
-		for (byte digit = 0; digit < NUMBER_OF_DIGITS; digit++) {
-			uint8_t Temp_Digit = Display_Data[digit];
-			if (Display_Decimal_Override) {
-				Temp_Digit = ((Temp_Digit & 0xFE) | (Decimal_Data[digit] ? 1 : 0));
-			}
-			TWI_Queue_Data[(NUMBER_OF_GLOBAL_CHANNELS + NUMBER_OF_DISPLAY_DIGITS) + digit] = Temp_Digit;
-		}
-		TWI_Queue_Length += 4;
-	}
+	return;
 }
