@@ -1,11 +1,9 @@
 #include "audio.h"
-#include "audio.inc"
-#include "notes.inc"
 
 // Queue structure variables
-volatile uint8_t* Channel_Pointer_Array[NUMBER_OF_CHANNELS];
+volatile uint8_t const * Channel_Pointer_Array[NUMBER_OF_CHANNELS];
 volatile uint8_t Channel_Note_Remaining_Array[NUMBER_OF_CHANNELS];
-uint8_t* Channel_Next_Pointer_Array[NUMBER_OF_CHANNELS];
+uint8_t const * Channel_Next_Pointer_Array[NUMBER_OF_CHANNELS];
 
 // Queue status variables
 volatile bool Channel_Enabled_Array[NUMBER_OF_CHANNELS];
@@ -36,11 +34,11 @@ void initAudio() {
 	return;
 }
 
-void playAudio(uint8_t audio_clip[]) {
+void playAudio(const uint8_t audio_clip[]) {
 	return queueAudioClip(audio_clip, false);
 }
 
-void loopAudio(uint8_t audio_clip[]) {
+void loopAudio(const uint8_t audio_clip[]) {
 	return queueAudioClip(audio_clip, true);
 }
 
@@ -60,7 +58,7 @@ void setVolume(byte volume) {
 
 	for (byte Channel = 0; Channel < NUMBER_OF_CHANNELS; Channel++) {
 		uint8_t Current_Channel_Volume = ((((uint16_t) volume + 1) * Volume_Array[Channel]) >> 8);
-		Temp_Voice_Configuration_Array[i] = (((Voice_Array[Channel] << 6) & VOICE_MASK) | (Current_Channel_Volume & VOLUME_MASK));
+		Temp_Voice_Configuration_Array[Channel] = (((Voice_Array[Channel] << 6) & VOICE_MASK) | (Current_Channel_Volume & VOLUME_MASK));
 	}
 
 	byte Temp_TWI_Queue_Pointer = TWI_QUEUE_VOICE_OFFSET;
@@ -74,7 +72,7 @@ void setVolume(byte volume) {
 	return;
 }
 
-void queueAudioClip(uint8_t audio_clip[], bool loop) {
+void queueAudioClip(const uint8_t audio_clip[], bool loop) {
 	byte Number_Of_Tracks = pgm_read_byte(audio_clip++);
 	byte Current_Channel = 0;
 
@@ -84,7 +82,7 @@ void queueAudioClip(uint8_t audio_clip[], bool loop) {
 
 		// Get first free channel
 		while (Current_Channel < NUMBER_OF_CHANNELS) {
-			if !(Channel_Enabled_Array[Current_Channel]) {
+			if (!(Channel_Enabled_Array[Current_Channel])) {
 				break;
 			}
 			else {
