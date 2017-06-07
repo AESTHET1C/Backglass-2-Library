@@ -1,5 +1,4 @@
 #include "io.h"
-#include "adc.h"
 
 void initIO() {
 	PORTD |= ((1 << FLIP_L_PIN) | (1 << FLIP_R_PIN));                     // Enable pull-ups
@@ -10,7 +9,7 @@ void initIO() {
 }
 
 bool readSensor(sensor_t sensor) {
-	switch sensor {
+	switch (sensor) {
 		case RAMP:
 			return (Ramp_Sense_Value <= RAMP_SENSE_THRESH);
 		case LOSE:
@@ -28,12 +27,13 @@ bool readSensor(sensor_t sensor) {
 		default:
 			return false;
 	}
+	return false;
 }
 
 void setLED(led_t bumper, bool state) {
 	uint8_t mask;
 
-	switch bumper {
+	switch (bumper) {
 		case BUMP_0:
 			mask = (1 << LED_0_PIN);
 			break;

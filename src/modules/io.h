@@ -10,6 +10,8 @@
 #ifndef io
 #define io
 
+#include "adc.h"
+
 /////////////////////////
 // CONFIGURATION VARIABLES
 /////////////////////////
@@ -23,18 +25,18 @@ const uint8_t LOSE_SENSE_THRESH = 192;
 /////////////////////////
 
 // Port B
-const byte LED_0_PIN = PORTB5;
-const byte LED_1_PIN = PORTB4;
-const byte LED_2_PIN = PORTB3;
+#define LED_0_PIN PORTB5
+#define LED_1_PIN PORTB4
+#define LED_2_PIN PORTB3
 
 // Port C
-const byte BUMP_0_PIN = PORTC2;
-const byte BUMP_1_PIN = PORTC1;
-const byte BUMP_2_PIN = PORTC0;
+#define BUMP_0_PIN PORTC2
+#define BUMP_1_PIN PORTC1
+#define BUMP_2_PIN PORTC0
 
 // Port D
-const byte FLIP_L_PIN = PORTD3;
-const byte FLIP_R_PIN = PORTD2;
+#define FLIP_L_PIN PORTD3
+#define FLIP_R_PIN PORTD2
 
 
 /////////////////////////
@@ -51,11 +53,16 @@ typedef enum {
 	BUMP_2 = 6
 } sensor_t;
 
-typedef enum {
-	BUMP_0 = 0,
-	BUMP_1 = 1,
-	BUMP_2 = 2
-} led_t;
+typedef sensor_t led_t;
+
+
+/////////////////////////
+// GLOBAL VARIABLES
+/////////////////////////
+
+// ADC
+extern volatile uint8_t Ramp_Sense_Value;
+extern volatile uint8_t Lose_Sense_Value;
 
 
 /////////////////////////
