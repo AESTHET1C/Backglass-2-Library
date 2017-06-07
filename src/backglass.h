@@ -8,6 +8,9 @@
 #ifndef backglass
 #define backglass
 
+#include "modules/io.h"
+#include "modules/timer1.h"
+
 /////////////////////////
 // AVAILABLE FUNCTIONS
 /////////////////////////
