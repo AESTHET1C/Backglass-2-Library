@@ -12,7 +12,7 @@ void initADC() {
 }
 
 ISR(ADC_vect) {
-	switch Current_ADC_Channel {
+	switch (Current_ADC_Channel) {
 		case RAMP_SENSE_CHANNEL:
 			Ramp_Sense_Value = ADCH;
 			Current_ADC_Channel = LOSE_SENSE_CHANNEL;

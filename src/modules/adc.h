@@ -13,12 +13,18 @@
 #ifndef adc
 #define adc
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <stdint.h>
+
+typedef uint8_t byte;
+
 /////////////////////////
 // PIN DEFINITIONS
 /////////////////////////
 
-const byte RAMP_SENSE_CHANNEL = 6;
-const byte LOSE_SENSE_CHANNEL = 7;
+#define RAMP_SENSE_CHANNEL 6
+#define LOSE_SENSE_CHANNEL 7
 
 
 /////////////////////////
