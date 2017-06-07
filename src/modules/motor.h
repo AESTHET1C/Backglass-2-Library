@@ -10,6 +10,10 @@
 #ifndef motor
 #define motor
 
+#include <avr/interrupt.h>
+#include <avr/io.h>
+#include <stdint.h>
+
 /////////////////////////
 // CONFIGURATION VARIABLES
 /////////////////////////
@@ -22,7 +26,7 @@ const uint8_t DEFAULT_MOTOR_SPEED = 127;
 /////////////////////////
 
 // Port B
-const byte MOTOR_PIN = PORTB2;
+#define MOTOR_PIN PORTB2
 
 
 /////////////////////////
