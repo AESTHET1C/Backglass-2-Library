@@ -1,8 +1,4 @@
 #include "timer1.h"
-#include "twi.h"
-#include "audio.h"
-#include "display.h"
-#include "motor.h"
 
 void initTimer1() {
 
@@ -13,7 +9,7 @@ void initTimer1() {
 	// Configure and enable Timer1 unit
 	TCCR1A = ((1 << COM1B1) | (1 << WGM10));
 	TCCR1B = ((1 << WGM12) | (1 << CS12) | (1 << CS10));
-	TIMSK1 = (1 << TOIE);
+	TIMSK1 = (1 << TOIE1);
 }
 
 ISR(TIMER1_OVF_vect) {
@@ -30,7 +26,7 @@ ISR(TIMER1_OVF_vect) {
 				if (Channel_Repeat_Array[Channel]) {
 					Channel_Pointer_Array[Channel] = Channel_Next_Pointer_Array[Channel];
 					TWI_Queue_Data[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]);
-					Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel])
+					Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]);
 				}
 				else {
 					Channel_Enabled_Array[Channel] = false;
@@ -42,7 +38,7 @@ ISR(TIMER1_OVF_vect) {
 
 	// Handle text scrolling
 	if (Display_Queue_Active) {
-		if (Display_Queue_Remaining-- == 0) {
+		if (Display_Scroll_Remaining-- == 0) {
 
 			// Scroll next digit
 			Display_Data[0] = Display_Data[1];
@@ -71,10 +67,10 @@ ISR(TIMER1_OVF_vect) {
 
 	// Queue display data if needed
 	if (Display_Update) {
-		for (byte Digit = 0; Digit < NUMBER_OF_DIGITS; Digit++) {
+		for (byte Digit = 0; Digit < NUMBER_OF_DISPLAY_DIGITS; Digit++) {
 			uint8_t Temp_Digit = Display_Data[Digit];
 			if (Display_Decimal_Override) {
-				Temp_Digit = ((Temp_Digit & 0xFE) | (Decimal_Data[Digit] ? 1 : 0));
+				Temp_Digit = ((Temp_Digit & 0x7F) | (Decimal_Data[Digit] ? 0x80 : 0));
 			}
 			TWI_Queue_Data[TWI_QUEUE_DISPLAY_OFFSET + Digit] = Temp_Digit;
 		}
