@@ -131,21 +131,4 @@ const uint8_t QUARTER_NOTE =              32;
 const uint8_t HALF_NOTE =                 64;
 const uint8_t WHOLE_NOTE =                128;
 
-// Shortened written note lengths
-const uint8_t 128TH_NOTE = 1;
-const uint8_t 64TH_NOTE =  2;
-const uint8_t 32ND_NOTE =  4;
-const uint8_t 16TH_NOTE =  8;
-const uint8_t 8TH_NOTE =   16;
-
-// Shorthand note lengths
-const uint8_t 128_NOTE = 1;
-const uint8_t 64_NOTE =  2;
-const uint8_t 32_NOTE =  4;
-const uint8_t 16_NOTE =  8;
-const uint8_t 8_NOTE =   16;
-const uint8_t 4_NOTE =   32;
-const uint8_t 2_NOTE =   64;
-const uint8_t 1_NOTE =   128;
-
 #endif

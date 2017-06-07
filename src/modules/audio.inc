@@ -15,7 +15,7 @@
 
 #include "notes.inc"
 
-const PROGMEM uint8_t[] VECTREX = {
+const PROGMEM uint8_t VECTREX[] = {
 	3, // Number of tracks (1-4)
 
 	// Track 0 configuration
@@ -23,9 +23,9 @@ const PROGMEM uint8_t[] VECTREX = {
 	63, // Volume (0-63)
 
 	// Track 0 data
-	NOTE_D4,  8TH_NOTE,
-	REST,     64TH_NOTE,
-	NOTE_D4,  16TH_NOTE,
+	NOTE_D4,  EIGHTH_NOTE,
+	REST,     SIXTY_FOURTH_NOTE,
+	NOTE_D4,  SIXTEENTH_NOTE,
 	NOTE_G5,  (HALF_NOTE + QUARTER_NOTE),
 	REST, 0,  // End of track data
 
@@ -34,9 +34,9 @@ const PROGMEM uint8_t[] VECTREX = {
 	3,  // Volume (0-63)
 
 	// Track 1 data
-	NOTE_D5,  8TH_NOTE,
-	REST,     64TH_NOTE,
-	NOTE_D5,  (16TH_NOTE + HALF_NOTE + QUARTER_NOTE),
+	NOTE_D5,  EIGHTH_NOTE,
+	REST,     SIXTY_FOURTH_NOTE,
+	NOTE_D5,  (SIXTEENTH_NOTE + HALF_NOTE + QUARTER_NOTE),
 	REST, 0,  // End of track data
 
 	// Track 2 configuration
@@ -44,7 +44,7 @@ const PROGMEM uint8_t[] VECTREX = {
 	8,  // Volume (0-63)
 
 	// Track 2 data
-	REST,     (8TH_NOTE + 64TH_NOTE + 16TH_NOTE),
+	REST,     (EIGHTH_NOTE + SIXTY_FOURTH_NOTE + SIXTEENTH_NOTE),
 	NOTE_G6,  (HALF_NOTE + QUARTER_NOTE),
 	REST, 0,  // End of track data
 };
