@@ -24,12 +24,18 @@
 #ifndef twi
 #define twi
 
+#include <binary.h>
+#include "audio.h"
+#include "display.h"
+
+typedef uint8_t byte;
+
 /////////////////////////
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-const uint8_t TWI_BIT_RATE = 400000;
-const uint8_t TWI_EXT_ADDR = 1;      // Address of audio/visual coprocessor
+#define TWI_BIT_RATE 400000
+#define TWI_EXT_ADDR 1       // Address of audio/visual coprocessor
 
 
 /////////////////////////
@@ -37,8 +43,8 @@ const uint8_t TWI_EXT_ADDR = 1;      // Address of audio/visual coprocessor
 /////////////////////////
 
 // Port C
-const byte TWI_SDA_PIN = PORTC4;
-const byte TWI_SCL_PIN = PORTC5;
+#define TWI_SDA_PIN PORTC4
+#define TWI_SCL_PIN PORTC5
 
 
 /////////////////////////
@@ -56,11 +62,11 @@ const uint8_t TWI_DATA_TRANSMITTED = 0x28;
 /////////////////////////
 
 // Queue pointer offsets
-const byte TWI_QUEUE_VOICE_OFFSET = NUMBER_OF_CHANNELS;
-const byte TWI_QUEUE_DISPLAY_OFFSET = (NUMBER_OF_CHANNELS + NUMBER_OF_CHANNELS);
+#define TWI_QUEUE_VOICE_OFFSET NUMBER_OF_CHANNELS
+#define TWI_QUEUE_DISPLAY_OFFSET (NUMBER_OF_CHANNELS + NUMBER_OF_CHANNELS)
 
 // Other
-const byte TWI_QUEUE_LENGTH = (TWI_QUEUE_DISPLAY_OFFSET + NUMBER_OF_DISPLAY_DIGITS);  // 12
+#define TWI_QUEUE_LENGTH (TWI_QUEUE_DISPLAY_OFFSET + NUMBER_OF_DISPLAY_DIGITS)  // 12
 const uint8_t TWI_SLA_W_BYTE = (TWI_EXT_ADDR << 1);
 
 

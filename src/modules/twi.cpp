@@ -6,7 +6,7 @@ volatile byte TWI_Queue_Length = 0;
 byte TWI_Queue_Pointer = 0;
 
 void initTWI() {
-	PRR |= (1 << PRTWI);
+	//PRR |= (1 << PRTWI);
 	TWBR = (((F_CPU / TWI_BIT_RATE) - 16) / 2);
 	TWCR |= (1 << TWIE);
 	return;
@@ -19,7 +19,7 @@ void beginI2CTransmission() {
 	return;
 }
 
-ISR (TWI_vect) {
+ISR(TWI_vect) {
 	if (TWI_Queue_Pointer < TWI_Queue_Length) {
 		switch TWSR {
 			case TWI_START_TRANSMITTED:
@@ -30,6 +30,8 @@ ISR (TWI_vect) {
 			case TWI_ADDR_TRANSMITTED:
 			case TWI_DATA_TRANSMITTED:
 				// Send data byte
+				TWCR &= ~((1 << TWINT) | (1 << TWSTA));
+
 				TWDR = TWI_Queue_Data[TWI_Queue_Pointer++];
 				break;
 			default:  // Some form of error
