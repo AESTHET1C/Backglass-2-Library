@@ -6,6 +6,15 @@
  * Written by Alex Tavares <tavaresa13@gmail.com>
  */
 
+#ifndef display
+#define display
+
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+#include "ascii.inc"
+
+typedef uint8_t byte;
+
 /////////////////////////
 // CONFIGURATION VARIABLES
 /////////////////////////
@@ -13,14 +22,14 @@
 const byte FAST_SCROLL = 10;
 const byte SLOW_SCROLL = 10;
 
-const unsigned int DISPLAY_QUEUE_LENGTH = 128; // Completely arbitrary. Can prabably be increased.
+#define DISPLAY_QUEUE_LENGTH 128  // Maximum length of scrolling text string. Completely arbitrary.
 
 
 /////////////////////////
 // MISC CONSTANTS
 /////////////////////////
 
-const byte NUMBER_OF_DISPLAY_DIGITS = 4;
+#define NUMBER_OF_DISPLAY_DIGITS 4
 
 
 /////////////////////////
@@ -68,3 +77,5 @@ void setDecimalPoints(bool a, bool b, bool c, bool d);
 void setDecimalPoints(byte decimal_data);
 
 int getRemainingTextCharacters();
+
+#endif

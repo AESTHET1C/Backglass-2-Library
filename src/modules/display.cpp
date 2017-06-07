@@ -1,5 +1,4 @@
 #include "display.h"
-#include "ascii.inc"
 
 // Display structure variables
 volatile bool Display_Update = false;
@@ -71,7 +70,7 @@ void displayNumber(int number, bool leading_zeros) {
 			// Remove and count leading zeros
 			byte Leading_Zeros = 0;
 			uint8_t ASCII_ZERO = pgm_read_byte(ASCII_DATA + '0' - ASCII_TABLE_OFFSET);
-			while (Leading_Zeros < NUMBER_OF_DISPLAY_DIGITS) {
+			while (Leading_Zeros < (NUMBER_OF_DISPLAY_DIGITS - 1)) {
 				if (Digit_Buffer[Leading_Zeros] == ASCII_ZERO) {
 					Digit_Buffer[Leading_Zeros] = 0;
 					Leading_Zeros++;
@@ -113,10 +112,10 @@ void displayText(char text[], byte scroll_speed) {
 		Display_Queue_Pointer = 0;
 		unsigned int Ascii_Text_Pointer = 0;
 		char Current_Character = text[Ascii_Text_Pointer];
-		while(Current_Character != NULL) {
+		while (Current_Character) {
 
 			// Map input ascii text to display data and add to display queue array
-			if ((Current_Character < ASCII_TABLE_OFFSET) || (Current_Character > 0xFF)) {
+			if (Current_Character < ASCII_TABLE_OFFSET) {
 				Display_Queue_Data[Display_Queue_Pointer] = 0;
 			}
 			else {
