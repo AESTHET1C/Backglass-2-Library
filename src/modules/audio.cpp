@@ -101,7 +101,7 @@ void queueAudioClip(const uint8_t audio_clip[], bool loop) {
 
 		// Update channel voice
 		uint8_t Current_Voice_Volume = ((((uint16_t) Global_Volume + 1) * Volume_Array[Current_Channel]) >> 8);
-		TWI_Queue_Data[TWI_QUEUE_VOICE_OFFSET + Current_Channel] = (((Voice_Array[Current_Channel] << 6) & VOICE_MASK) | (Current_Voice_Volume & VOLUME_MASK));
+		TWI_Queue_Data[TWI_QUEUE_VOICE_OFFSET + Current_Channel] = ((Voice_Array[Current_Channel] & VOICE_MASK) | ((Current_Voice_Volume << 2) & VOLUME_MASK));
 		Voice_Update = true;
 
 		// Initialize queue structure for channel

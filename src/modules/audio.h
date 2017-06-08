@@ -50,8 +50,8 @@ const byte DEFAULT_GLOBAL_VOLUME =  255;
 #define NUMBER_OF_CHANNELS 4
 
 // Bit masks
-const uint8_t VOICE_MASK =  B11000000;
-const uint8_t VOLUME_MASK = B00111111;
+const uint8_t VOICE_MASK =  B00000011;
+const uint8_t VOLUME_MASK = B11111100;
 
 
 /////////////////////////
