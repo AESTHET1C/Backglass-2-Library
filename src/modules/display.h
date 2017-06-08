@@ -19,7 +19,8 @@ typedef uint8_t byte;
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-const byte FAST_SCROLL = 10;
+const byte FAST_SCROLL = 5;
+const byte NORM_SCROLL = 7;
 const byte SLOW_SCROLL = 10;
 
 #define DISPLAY_QUEUE_LENGTH 128  // Maximum length of scrolling text string. Completely arbitrary.
@@ -60,6 +61,9 @@ void displayNumber(int number, bool leading_zeros);
  */
 
 void displayText(char text[], byte scroll_speed);
+/*
+ *
+ */
 
 void displayNumberOfBalls(byte balls);
 /*

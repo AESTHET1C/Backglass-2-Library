@@ -51,7 +51,11 @@
 `void displayNumber(int number)` – Displays a number with leading zeros. Range is limited from -999 to +9999.
 `void displayNumber(int number, bool leading_zeros)` – Displays a number, with the option for leading zeros. Range is limited from -999 to +9999.
 
-`void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling.
+`void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
+
+* SLOW_SCROLL
+* NORM_SCROLL
+* FAST_SCROLL
 
 `void displayNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
 
