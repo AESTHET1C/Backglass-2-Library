@@ -25,8 +25,8 @@ ISR(TIMER1_OVF_vect) {
 			if ((Channel_Note_Remaining_Array[Channel]-- == 0) && (TWI_Queue_Data[Channel] == 0)) {
 				if (Channel_Repeat_Array[Channel]) {
 					Channel_Pointer_Array[Channel] = Channel_Next_Pointer_Array[Channel];
-					TWI_Queue_Data[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]);
-					Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]);
+					TWI_Queue_Data[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]++);
+					Channel_Note_Remaining_Array[Channel] = pgm_read_byte(Channel_Pointer_Array[Channel]++);
 				}
 				else {
 					Channel_Enabled_Array[Channel] = false;
@@ -34,7 +34,7 @@ ISR(TIMER1_OVF_vect) {
 			}
 		}
 	}
-	TWI_Queue_Length = 4;
+	TWI_Queue_Length = NUMBER_OF_CHANNELS;
 
 	// Handle text scrolling
 	if (Display_Queue_Active) {
@@ -61,7 +61,7 @@ ISR(TIMER1_OVF_vect) {
 
 	// Queue audio channel voices if needed
 	if (Voice_Update || Display_Update) {
-		TWI_Queue_Length += 4;
+		TWI_Queue_Length += NUMBER_OF_CHANNELS;
 		Voice_Update = false;
 	}
 
@@ -74,7 +74,7 @@ ISR(TIMER1_OVF_vect) {
 			}
 			TWI_Queue_Data[TWI_QUEUE_DISPLAY_OFFSET + Digit] = Temp_Digit;
 		}
-		TWI_Queue_Length += 4;
+		TWI_Queue_Length += NUMBER_OF_DISPLAY_DIGITS;
 	}
 
 	return;
