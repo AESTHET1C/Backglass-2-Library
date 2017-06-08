@@ -135,8 +135,8 @@ void displayText(char text[], byte scroll_speed) {
 			Current_Character = text[Ascii_Text_Pointer];
 
 			// If the next ascii text character is a period, tack that onto the previous character if possible
-			if ((Current_Character == '.') && !(Display_Queue_Data[Display_Queue_Pointer - 1] & 1)) {
-				Display_Queue_Data[Display_Queue_Pointer - 1] |= 1;
+			if ((Current_Character == '.') && !(Display_Queue_Data[Display_Queue_Pointer - 1] & 0x80)) {
+				Display_Queue_Data[Display_Queue_Pointer - 1] |= 0x80;
 				Current_Character = text[++Ascii_Text_Pointer];
 			}
 		}
