@@ -109,6 +109,7 @@ void queueAudioClip(const uint8_t audio_clip[], bool loop) {
 		Channel_Pointer_Array[Current_Channel] = audio_clip;
 		Channel_Next_Pointer_Array[Current_Channel] = audio_clip;
 		Channel_Repeat_Array[Current_Channel] = loop;
+		Channel_Note_Remaining_Array[Current_Channel] = 0;
 
 		// Scan to next track if needed
 		if ((Track + 1) < Number_Of_Tracks) {
