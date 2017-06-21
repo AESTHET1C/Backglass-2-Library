@@ -2,7 +2,30 @@
 
 ## About
 
+The Backglass 2 User Library gives programmers easy access to advanced behaviors on the Backglass 2 pinball controller board using the Arduino IDE. It offers a complete and cohesive set of functions to handle all sensing and output functionality, including advanced audio sequencing and character display on the Backglass 2 pinball controller board.
+
+Functionality of this library includes:
+
+* Sensing bumper hits, and 'RAMP' and 'LOSE' sensor activations
+* Setting bumper LED states
+* Setting motor state and speed
+* Playing and/or looping audio clips
+* Displaying scrolling text, remaining number of balls, and other information
+* Saving and reading scores and other data to and from non-volatile memory
+* Communicating debugging information over serial
+* Miscellaneous timing and state-related routines
+
+For additional details on functionality, read through the API overview below.
+
 ## Installation
+
+This library can be downloaded from GitHub by clicking the green "Clone or download" button and selecting "Download ZIP".
+
+The library can be imported into the Arduino IDE by selecting `Sketch` in the toolbar, then `Include Library -> Add .ZIP Library...` and browsing to the downloaded ZIP file.
+
+`#include <backglass.h>` must then be added to the top of any programs that use this library.
+
+To add additional audio clips, place the clip's .inc file in the sketch folder and include it at the top of the sketch. (`#include "filename.inc"`)
 
 ## API
 
