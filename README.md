@@ -38,6 +38,7 @@
 
 * VECTREX
 * JAMMIN
+* COIN
 
 `void loopAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip and endlessly loops. Valid arguments are identical to `playAudio()`.
 
