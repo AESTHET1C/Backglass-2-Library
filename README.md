@@ -2,7 +2,7 @@
 
 ## About
 
-The Backglass 2 User Library gives programmers easy access to advanced behaviors on the Backglass 2 pinball controller board using the Arduino IDE. It offers a complete and cohesive set of functions to handle all sensing and output functionality, including advanced audio sequencing and character display on the Backglass 2 pinball controller board.
+The Backglass 2 User Library gives programmers easy access to advanced behaviors on the [Backglass 2](https://github.com/AESTHET1C/Backglass-2/) pinball controller board using the Arduino IDE. It offers a complete and cohesive set of functions to handle all sensing and output functionality, including advanced audio sequencing and character display on the Backglass 2 pinball controller board.
 
 Functionality of this library includes:
 
