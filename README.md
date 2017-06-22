@@ -118,4 +118,4 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 `long getMillis()` – Returns the number of elapsed milliseconds since power-on. Alias of Arduino's `millis()` function.
 
-`void delayMillis(long milliseconds)` – Delays for the given number of milliseconds, blocking other code from running. Should be used sparingly. Equivalent to Arduino's `delay()` function.
+`void waitMillis(long milliseconds)` – Waits for the given number of milliseconds, blocking other code from running. Should be used sparingly. Alias of Arduino's `delay()` function.

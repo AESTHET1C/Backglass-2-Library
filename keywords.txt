@@ -32,6 +32,10 @@ saveText	KEYWORD2
 load	KEYWORD2
 loadText	KEYWORD2
 
+# Timing
+getMillis	KEYWORD2
+waitMillis	KEYWORD2
+
 
 #########################
 ## CONSTANTS

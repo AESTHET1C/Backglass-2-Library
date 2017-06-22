@@ -11,6 +11,7 @@
 #include "modules/io.h"
 #include "modules/timer1.h"
 #include "modules/eeprom.h"
+#include "modules/timing.h"
 
 /////////////////////////
 // AVAILABLE FUNCTIONS
