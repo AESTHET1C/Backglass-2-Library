@@ -32,6 +32,7 @@ void saveText(int location, char text[]) {
 		if (text[Pointer] == (char) NULL) {
 			break;
 		}
+		Pointer += 1;
 	}
 	return;
 }
