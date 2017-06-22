@@ -59,6 +59,12 @@ ISR(TIMER1_OVF_vect) {
 		}
 	}
 
+	// NOTICE
+	// This line is added purely to account for a bug in the Backglass 2 firmware
+	// It forces at least 8 bytes to be sent per transmission
+	// It should be removed when this bug is fixed
+	Voice_Update = true;
+
 	// Queue audio channel voices if needed
 	if (Voice_Update || Display_Update) {
 		TWI_Queue_Length += NUMBER_OF_CHANNELS;
