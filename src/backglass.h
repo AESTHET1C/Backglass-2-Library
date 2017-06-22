@@ -10,6 +10,7 @@
 
 #include "modules/io.h"
 #include "modules/timer1.h"
+#include "modules/eeprom.h"
 
 /////////////////////////
 // AVAILABLE FUNCTIONS

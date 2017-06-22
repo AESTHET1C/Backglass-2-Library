@@ -95,10 +95,21 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 ### Storage
 
-**TODO**
+`void save(int location, int value)` – Saves a value to the specified location in EEPROM. Pre-defined locations include:
+
+* HIGH_SCORE[0] - HIGH_SCORE[9]
+* GAME_PLAYS
+
+`void saveText(int location, char text[])` – Saves a short text string (up to 16 characters) to the specified location in EEPROM. Pre-defined locations include:
+
+* HIGH_SCORE_NAME[0] - HIGH_SCORE_NAME[9]
+
+`int load(int location)` – Loads a value from the specified location in EEPROM. Pre-defined locations are identical to `save()`.
+
+`char * loadText(int location)` – Loads a short text string from the specified location in EEPROM. Pre-defined locations are identical to `saveText()`.
 
 ### Timing
 
 `long getMillis()` – Returns the number of elapsed milliseconds since power-on. Alias of Arduino's `millis()` function.
 
-`long delayMillis()` – Delays for the given number of milliseconds, blocking other code from running. Should be used sparingly. Alias of Arduino's `delay()` function.
+`void delayMillis(long milliseconds)` – Delays for the given number of milliseconds, blocking other code from running. Should be used sparingly. Equivalent to Arduino's `delay()` function.
