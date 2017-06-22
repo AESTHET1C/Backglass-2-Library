@@ -19,7 +19,7 @@ const PROGMEM uint8_t VECTREX[] = {
 	3, // Number of tracks (1-4)
 
 	// Track 0 configuration
-	1,  // Voice type (0-3)
+	0,  // Voice type (0-3)
 	63, // Volume (0-63)
 
 	// Track 0 data
@@ -30,7 +30,7 @@ const PROGMEM uint8_t VECTREX[] = {
 	REST, 0,  // End of track data
 
 	// Track 1 configuration
-	2,  // Voice type (0-3)
+	1,  // Voice type (0-3)
 	63,  // Volume (0-63)
 
 	// Track 1 data
@@ -41,7 +41,7 @@ const PROGMEM uint8_t VECTREX[] = {
 
 	// Track 2 configuration
 	0,  // Voice type (0-3)
-	63,  // Volume (0-63)
+	32,  // Volume (0-63)
 
 	// Track 2 data
 	REST,     (EIGHTH_NOTE + SIXTY_FOURTH_NOTE + SIXTEENTH_NOTE),
