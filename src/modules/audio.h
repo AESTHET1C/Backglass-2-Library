@@ -74,11 +74,13 @@ void initAudio();
  */
 
 void playAudio(const uint8_t audio_clip[]);
+void playAudio(const uint8_t audio_clip[], byte volume);
 /*
  *
  */
 
 void loopAudio(const uint8_t audio_clip[]);
+void loopAudio(const uint8_t audio_clip[], byte volume);
 /*
  *
  */
@@ -98,7 +100,7 @@ void setVolume(byte volume);
 // INTERNAl FUNCTIONS
 /////////////////////////
 
-void queueAudioClip(const uint8_t audio_clip[], bool loop);
+void queueAudioClip(const uint8_t audio_clip[], bool loop, byte volume);
 /*
  *
  */

@@ -35,11 +35,19 @@ void initAudio() {
 }
 
 void playAudio(const uint8_t audio_clip[]) {
-	return queueAudioClip(audio_clip, false);
+	return queueAudioClip(audio_clip, false, 255);
+}
+
+void playAudio(const uint8_t audio_clip[], byte volume) {
+	return queueAudioClip(audio_clip, false, volume);
 }
 
 void loopAudio(const uint8_t audio_clip[]) {
-	return queueAudioClip(audio_clip, true);
+	return queueAudioClip(audio_clip, true, 255);
+}
+
+void loopAudio(const uint8_t audio_clip[], byte volume) {
+	return queueAudioClip(audio_clip, true, volume);
 }
 
 void stopAudio() {
@@ -72,7 +80,7 @@ void setVolume(byte volume) {
 	return;
 }
 
-void queueAudioClip(const uint8_t audio_clip[], bool loop) {
+void queueAudioClip(const uint8_t audio_clip[], bool loop, byte volume) {
 	byte Number_Of_Tracks = pgm_read_byte(audio_clip++);
 	byte Current_Channel = 0;
 
@@ -101,6 +109,7 @@ void queueAudioClip(const uint8_t audio_clip[], bool loop) {
 
 		// Update channel voice
 		uint8_t Current_Voice_Volume = ((((uint16_t) Global_Volume + 1) * Volume_Array[Current_Channel]) >> 8);
+		Current_Voice_Volume = ((((uint16_t) volume + 1) * Current_Voice_Volume) >> 8);
 		TWI_Queue_Data[TWI_QUEUE_VOICE_OFFSET + Current_Channel] = ((Voice_Array[Current_Channel] & VOICE_MASK) | ((Current_Voice_Volume << 2) & VOLUME_MASK));
 		Voice_Update = true;
 
