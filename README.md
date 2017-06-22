@@ -63,7 +63,11 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 * JAMMIN
 * COIN
 
+`void playAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
+
 `void loopAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip and endlessly loops. Valid arguments are identical to `playAudio()`.
+
+`void loopAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
 
 `void stopAudio()` – Stops all audio playback, including looping clips.
 
@@ -74,7 +78,8 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 `void clearDisplay()` – Clears the display and stops any scrolling text.
 
 `void displayNumber(int number)` – Displays a number with leading zeros. Range is limited from -999 to +9999.
-`void displayNumber(int number, bool leading_zeros)` – Displays a number, with the option for leading zeros. Range is limited from -999 to +9999.
+
+`void displayNumber(int number, bool leading_zeros)` – Same as above, but with the option for leading zeros.
 
 `void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
 
@@ -85,7 +90,8 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 `void displayNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
 
 `void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().
-`void setDecimalPoints(byte decimal_data)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay(). LSB is right-most decimal point.
+
+`void setDecimalPoints(byte decimal_data)` – Same as above, but using a byte input rather than four booleans. LSB is right-most decimal point.
 
 `int getRemainingTextCharacters()` – Returns the remaining number of characters to scroll.
 
