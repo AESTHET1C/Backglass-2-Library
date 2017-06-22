@@ -6,9 +6,9 @@ volatile byte TWI_Queue_Length = 0;
 byte TWI_Queue_Pointer = 0;
 
 void initTWI() {
-	//PRR |= (1 << PRTWI);
 	TWBR = (((F_CPU / TWI_BIT_RATE) - 16) / 2);
 	TWCR |= (1 << TWIE);
+	PRR |= (1 << PRTWI);
 	return;
 }
 
