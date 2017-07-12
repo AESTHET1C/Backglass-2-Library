@@ -386,9 +386,8 @@ for track in range(Tracks):
 parseMetadataTrack()
 
 # Do the actual midi parsing
-# Tracks are added in reverse order because OpenMPT reverses them for whatever reason
 for track in range(Tracks):
-	parseMidiTrack(Tracks - (track + 1))
+	parseMidiTrack(track)
 
 # Write data to file
 Temp_Filename = ""
