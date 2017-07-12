@@ -7,7 +7,7 @@ void initTimer1() {
 	initMotor();
 
 	// Configure and enable Timer1 unit
-	TCCR1A = ((1 << COM1B1) | (1 << WGM10));
+	TCCR1A = (1 << WGM10);
 	TCCR1B = ((1 << WGM12) | (1 << CS12) | (1 << CS10));
 	TIMSK1 = (1 << TOIE1);
 }

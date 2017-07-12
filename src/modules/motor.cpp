@@ -8,8 +8,16 @@ void initMotor() {
 
 void setMotor(bool state) {
 	cli();
-	OCR1BH = 0;
-	OCR1BL = (state ? Motor_Speed : 0);
+	if (state) {
+		TCCR1A = ((1 << COM1B1) | (1 << WGM10));
+		OCR1BH = 0;
+		OCR1BL = Motor_Speed;
+	}
+	else {
+		TCCR1A = (1 << WGM10);
+		OCR1BH = 0;
+		OCR1BL = 0;
+	}
 	sei();
 	return;
 }
