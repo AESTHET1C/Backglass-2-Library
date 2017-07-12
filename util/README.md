@@ -1,12 +1,12 @@
-# MID2INC—.MID to .INC File Conversion Script
+# MID2HEAD—.MID to .H File Conversion Script
 
 ## About
 
-MID2INC is a Python script that reads certain types of MIDI files and converts the data into a proprietary scheme that can be used by the [Backglass 2 User Library](https://github.com/AESTHET1C/Backglass-2-Library/). This allows the Library to play custom sequenced audio.
+MID2HEAD is a Python script that reads certain types of MIDI files and converts the data into a proprietary scheme that can be used by the [Backglass 2 User Library](https://github.com/AESTHET1C/Backglass-2-Library/). This allows the Library to play custom sequenced audio.
 
 ## Usage
 
-Place the MIDI file in the same directory as MID2INC. Run MID2INC and input the file name, including the file extension (".mid", ".midi"). If no errors arise, follow the instructions given by the script to start using the generated file. Note that while errors may occur, it does not necessarily mean the output file will be unusable. In the event that the output file cannot be played, follow the advice of the following section.
+Place the MIDI file in the same directory as MID2HEAD. Run MID2HEAD and input the file name, including the file extension (".mid", ".midi"). If no errors arise, follow the instructions given by the script to start using the generated file. Note that while errors may occur, it does not necessarily mean the output file will be unusable. In the event that the output file cannot be played, follow the advice of the following section.
 
 ## Requirements for MIDI files
 

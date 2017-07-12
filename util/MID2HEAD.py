@@ -396,7 +396,7 @@ for char in Filename:
 		Temp_Filename += char
 	else:
 		break
-Filename = Temp_Filename + ".inc"
+Filename = Temp_Filename + ".h"
 Output_String = "const PROGMEM uint8_t CLIPNAME[] = {\n"
 Output_String += ("\t" + str(Tracks) + ", // Number of tracks")
 for track in range(Tracks):
