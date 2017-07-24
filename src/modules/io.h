@@ -44,13 +44,13 @@ const uint8_t LOSE_SENSE_THRESH = 192;
 /////////////////////////
 
 typedef enum {
-	RAMP   = 0,
-	LOSE   = 1,
-	FLIP_L = 2,
-	FLIP_R = 3,
-	BUMP_0 = 4,
-	BUMP_1 = 5,
-	BUMP_2 = 6
+	BUMP_0 = 0,
+	BUMP_1 = 1,
+	BUMP_2 = 2,
+	RAMP   = 3,
+	LOSE   = 4,
+	FLIP_L = 5,
+	FLIP_R = 6
 } sensor_t;
 
 typedef sensor_t led_t;
