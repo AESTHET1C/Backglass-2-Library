@@ -25,7 +25,7 @@ The library can be imported into the Arduino IDE by selecting `Sketch` in the to
 
 `#include <backglass.h>` must then be added to the top of any programs that use this library.
 
-To add additional audio clips, place the clip's .inc file in the sketch folder and include it at the top of the sketch. (`#include "filename.inc"`)
+To add additional audio clips, place the clip's .h file in the sketch folder and include it at the top of the sketch. (`#include "filename.h"`)
 
 ## API
 
@@ -57,12 +57,26 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 ### Speaker
 
+>#### Some notes about Backglass's audio
+>The Backglass Firmware plays audio using 4 *channels*. When an audio clip is played, each of that clip's *tracks* are assigned to unused channels, and are played at the same time. If there are not enough free channels, some of the clip's tracks may not be played. If you are having issues where an audio clip will not play correctly and one or more clips are already playing, check that you are not trying to play more than 4 tracks at a time.
+>
+>Each of Backglass's channels have independent *voice* control.
+>The voice refers to the timbre of the note, and can be between 0 and 3. These are defined as so:
+>* Voice 0: 12.5% duty cycle – shrillest sound
+>* Voice 1: 25% duty cycle
+>* Voice 2: 37.5% duty cycle
+>* Voice 3: 50% duty cycle – smoothest sound
+
+`void playTone(byte note, byte duration)` – Plays a given note for a given amount of time. See *notes.inc* for a full list of options.
+
+`void playTone(byte note, byte duration, byte voice, byte volume)` – Same as above, but with the ability to specify the tone's voice and volume. The default voice and volume are 0 and 255, respectively.
+
 `void playAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip. Included audio clips are:
 
-* VECTREX (3 channels)
-* COIN (1 channel)
-* MEGALOVANIA (4 channels) (song)
-* JAMMIN (3 channels) (song)
+* VECTREX (3 tracks)
+* COIN (1 track)
+* MEGALOVANIA (4 tracks) (song)
+* JAMMIN (3 tracks) (song)
 
 `void playAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
 
@@ -84,17 +98,19 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 `void displayText(char text[])` – Displays a short alphanumeric string.
 
-`void scrollText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
+`void scrollNumber(long number, byte scroll_speed)` – Clears the display and starts scrolling a number at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
 
 * SLOW_SCROLL
 * NORM_SCROLL
 * FAST_SCROLL
 
-`void scrollNumber(long number, byte scroll_speed)` – Same as above, but displays a number rather than an alphanumeric string.
+`void scrollText(char text[], byte scroll_speed)` – Same as above, but displays an alphanumeric string rather than a number.
 
-`void showNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
+`void showNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling `
+clearDisplay()`.
 
-`void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().
+`void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling `
+clearDisplay()`.
 
 `void setDecimalPoints(byte decimal_data)` – Same as above, but using a byte input rather than four booleans. LSB is right-most decimal point.
 
@@ -115,7 +131,7 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 * HIGH_SCORE_NAME[0] - HIGH_SCORE_NAME[9]
 
-`int loadNumber(int location)` – Loads a value from the specified location in EEPROM. Pre-defined locations are identical to `save()`.
+`int loadNumber(int location)` – Loads a value from the specified location in EEPROM. Pre-defined locations are identical to `saveNumber()`.
 
 `char * loadText(int location)` – Loads a short text string from the specified location in EEPROM. Pre-defined locations are identical to `saveText()`.
 

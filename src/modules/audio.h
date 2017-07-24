@@ -15,7 +15,7 @@
  *	 1 and 4 "tracks", which are assigned to available channels when a clip is played.
  *
  * All tracks of an audio clip start playing simultaneously, but loop independently of each other.
- * For a multi-track audio clip to loop properly, all tracks must have an identical duration.
+ * For a multi-track audio clip to loop properly, all tracks must be of identical duration.
  *
  * If there are not enough free channels to play all tracks in an audio clip, the highest-numbered
  * track(s) of the audio clip are not played.

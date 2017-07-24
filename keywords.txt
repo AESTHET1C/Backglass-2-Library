@@ -13,6 +13,7 @@ setMotor	KEYWORD2
 changeMotorSpeed	KEYWORD2
 
 # Speaker
+playTone	KEYWORD2
 playAudio	KEYWORD2
 loopAudio	KEYWORD2
 stopAudio	KEYWORD2
