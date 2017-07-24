@@ -14,6 +14,16 @@ void initTimer1() {
 
 ISR(TIMER1_OVF_vect) {
 
+	// Display currently playing audio channels if secret debug mode enabled
+	#ifdef AUDIO_CHANNEL_DEBUG
+		Decimal_Data[0] = Channel_Enabled_Array[0];
+		Decimal_Data[1] = Channel_Enabled_Array[1];
+		Decimal_Data[2] = Channel_Enabled_Array[2];
+		Decimal_Data[3] = Channel_Enabled_Array[3];
+		Display_Decimal_Override = true;
+		Display_Update = true;
+	#endif
+
 	// Begin the I2C transmission so we can send first byte as soon as possible
 	beginI2CTransmission();
 

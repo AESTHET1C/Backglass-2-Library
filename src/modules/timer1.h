@@ -18,6 +18,9 @@
 #include "motor.h"
 #include "twi.h"
 
+// Secret debug mode enable
+//#define AUDIO_CHANNEL_DEBUG
+
 /////////////////////////
 // GLOBAL VARIABLES
 /////////////////////////
