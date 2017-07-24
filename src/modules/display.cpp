@@ -150,7 +150,7 @@ void displayText(char text[]) {
 	return;
 }
 
-void scrollNumber (int number, byte scroll_speed) {
+void scrollNumber (long number, byte scroll_speed) {
 	if (!Display_Queue_Active) {
 
 		// Clear display (atomic operation)

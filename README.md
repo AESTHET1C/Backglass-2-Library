@@ -89,6 +89,8 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 * NORM_SCROLL
 * FAST_SCROLL
 
+`void scrollNumber(long number, byte scroll_speed)` – Same as above, but displays a number rather than an alphanumeric string.
+
 `void showNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
 
 `void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().

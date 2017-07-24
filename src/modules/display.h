@@ -71,7 +71,7 @@ void displayText(char text[]);
  * INPUT:  String to be displayed
  */
 
-void scrollNumber(int number, byte scroll_speed);
+void scrollNumber(long number, byte scroll_speed);
 /*
  *
  */
