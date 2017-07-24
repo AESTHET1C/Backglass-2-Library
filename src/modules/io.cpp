@@ -15,15 +15,15 @@ bool readSensor(sensor_t sensor) {
 		case LOSE:
 			return (Lose_Sense_Value <= LOSE_SENSE_THRESH);
 		case FLIP_L:
-			return (!!((PORTD >> FLIP_L_PIN) & 1));
+			return (!!((PIND >> FLIP_L_PIN) & 1));
 		case FLIP_R:
-			return (!!((PORTD >> FLIP_R_PIN) & 1));
+			return (!!((PIND >> FLIP_R_PIN) & 1));
 		case BUMP_0:
-			return (!((PORTC >> BUMP_0_PIN) & 1));
+			return (!((PINC >> BUMP_0_PIN) & 1));
 		case BUMP_1:
-			return (!((PORTC >> BUMP_1_PIN) & 1));
+			return (!((PINC >> BUMP_1_PIN) & 1));
 		case BUMP_2:
-			return (!((PORTC >> BUMP_2_PIN) & 1));
+			return (!((PINC >> BUMP_2_PIN) & 1));
 		default:
 			return false;
 	}
