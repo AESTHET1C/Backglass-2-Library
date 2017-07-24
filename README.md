@@ -105,7 +105,7 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 ### Storage
 
-`void save(int location, int value)` – Saves a value to the specified location in EEPROM. Pre-defined locations include:
+`void saveNumber(int location, int value)` – Saves a value to the specified location in EEPROM. Pre-defined locations include:
 
 * HIGH_SCORE[0] - HIGH_SCORE[9]
 * GAME_PLAYS
@@ -114,7 +114,7 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 * HIGH_SCORE_NAME[0] - HIGH_SCORE_NAME[9]
 
-`int load(int location)` – Loads a value from the specified location in EEPROM. Pre-defined locations are identical to `save()`.
+`int loadNumber(int location)` – Loads a value from the specified location in EEPROM. Pre-defined locations are identical to `save()`.
 
 `char * loadText(int location)` – Loads a short text string from the specified location in EEPROM. Pre-defined locations are identical to `saveText()`.
 

@@ -29,9 +29,9 @@ setDecimalPoints	KEYWORD2
 getRemainingScrollCharacters	KEYWORD2
 
 # EEPROM
-save	KEYWORD2
+saveNumber	KEYWORD2
 saveText	KEYWORD2
-load	KEYWORD2
+loadNumber	KEYWORD2
 loadText	KEYWORD2
 
 # Timing

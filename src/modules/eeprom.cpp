@@ -2,7 +2,7 @@
 
 char LOAD_TEXT_ARRAY[MAX_TEXT_LENGTH + 1];
 
-void save(int location, int value) {
+void saveNumber(int location, int value) {
 	uint8_t Low_Byte = (value & 0xFF);
 	uint8_t High_Byte = ((value >> 8) & 0xFF);
 
@@ -37,7 +37,7 @@ void saveText(int location, char text[]) {
 	return;
 }
 
-int load(int location) {
+int loadNumber(int location) {
 	eeprom_busy_wait();
 	return eeprom_read_word((uint16_t*) location);
 }

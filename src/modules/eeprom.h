@@ -37,7 +37,7 @@ const byte GAME_PLAYS = 20;
 const byte HIGH_SCORE_NAME[NUMBER_OF_SCORES] = {64, 80, 96, 112, 128, 144, 160, 176, 192, 208};
 
 
-void save(int location, int value);
+void saveNumber(int location, int value);
 /*
  * Saves an integer to non-volatile memory
  *
@@ -58,7 +58,7 @@ void saveText(int location, char text[]);
  *         Array of characters to save
  */
 
-int load(int location);
+int loadNumber(int location);
 /*
  * Loads an integer from non-volatile memory
  *
