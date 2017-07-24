@@ -17,7 +17,7 @@ byte Volume_Array[NUMBER_OF_CHANNELS];
 
 
 void initAudio() {
-	const uint8_t Default_Channel_Volume = ((((uint16_t) DEFAULT_GLOBAL_VOLUME + 1) * DEFAULT_CHANNEL_VOLUME) >> 8);
+	const uint8_t Default_Channel_Volume = scaleVolume(scaleVolume(DEFAULT_CHANNEL_VOLUME, DEFAULT_GLOBAL_VOLUME), MAX_VOICE_VOLUME);
 	const uint8_t Default_Channel_Configuration = (((Default_Channel_Volume << 6) & VOICE_MASK) | (DEFAULT_CHANNEL_VOLUME & VOLUME_MASK));
 
 	for (byte Channel = 0; Channel < NUMBER_OF_CHANNELS; Channel++) {
@@ -35,7 +35,7 @@ void initAudio() {
 }
 
 void playAudio(const uint8_t audio_clip[]) {
-	return queueAudioClip(audio_clip, false, 255);
+	return queueAudioClip(audio_clip, false, DEFAULT_CLIP_VOLUME);
 }
 
 void playAudio(const uint8_t audio_clip[], byte volume) {
@@ -43,7 +43,7 @@ void playAudio(const uint8_t audio_clip[], byte volume) {
 }
 
 void loopAudio(const uint8_t audio_clip[]) {
-	return queueAudioClip(audio_clip, true, 255);
+	return queueAudioClip(audio_clip, true, DEFAULT_CLIP_VOLUME);
 }
 
 void loopAudio(const uint8_t audio_clip[], byte volume) {
@@ -65,7 +65,7 @@ void setVolume(byte volume) {
 	uint8_t Temp_Voice_Configuration_Array[NUMBER_OF_CHANNELS];
 
 	for (byte Channel = 0; Channel < NUMBER_OF_CHANNELS; Channel++) {
-		uint8_t Current_Channel_Volume = ((((uint16_t) volume + 1) * Volume_Array[Channel]) >> 8);
+		uint8_t Current_Channel_Volume = scaleVolume(scaleVolume(volume, Volume_Array[Channel]), MAX_VOICE_VOLUME);
 		Temp_Voice_Configuration_Array[Channel] = (((Voice_Array[Channel] << 6) & VOICE_MASK) | (Current_Channel_Volume & VOLUME_MASK));
 	}
 
@@ -108,8 +108,7 @@ void queueAudioClip(const uint8_t audio_clip[], bool loop, byte volume) {
 		Volume_Array[Current_Channel] = pgm_read_byte(audio_clip++);
 
 		// Update channel voice
-		uint8_t Current_Voice_Volume = ((((uint16_t) Global_Volume + 1) * Volume_Array[Current_Channel]) >> 8);
-		Current_Voice_Volume = ((((uint16_t) volume + 1) * Current_Voice_Volume) >> 8);
+		uint8_t Current_Voice_Volume = scaleVolume(scaleVolume(scaleVolume(volume, Volume_Array[Current_Channel]), Global_Volume), MAX_VOICE_VOLUME);
 		TWI_Queue_Data[TWI_QUEUE_VOICE_OFFSET + Current_Channel] = ((Voice_Array[Current_Channel] & VOICE_MASK) | ((Current_Voice_Volume << 2) & VOLUME_MASK));
 		Voice_Update = true;
 
@@ -137,4 +136,8 @@ void queueAudioClip(const uint8_t audio_clip[], bool loop, byte volume) {
 
 	sei();
 	return;
+}
+
+uint8_t scaleVolume(uint8_t volume_a, uint8_t volume_b) {
+	return ((((uint16_t) volume_a + 1) * volume_b) >> 8);
 }

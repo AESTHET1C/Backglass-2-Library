@@ -401,8 +401,8 @@ Output_String = "const PROGMEM uint8_t CLIPNAME[] = {\n"
 Output_String += ("\t" + str(Tracks) + ", // Number of tracks")
 for track in range(Tracks):
 	Output_String += ("\n\n\t// Track " + str(track) + "\n")
-	Output_String += ("\t0,  // Voice type (0-3)\n")
-	Output_String += ("\t0,  // Volume (0-63)\n\t")
+	Output_String += ("\tDEFAULT_CHANNEL_VOICE,  // Voice type (0-3)\n")
+	Output_String += ("\tDEFAULT_CHANNEL_VOLUME,  // Volume (0-255)\n\t")
 	for note in Output_Data[track]:
 		Output_String += (str(note[0]) + ", " + str(note[1]) + ", ")
 Output_String = Output_String[:-2] + ("\n};\n")
