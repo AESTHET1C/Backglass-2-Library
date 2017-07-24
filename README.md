@@ -81,7 +81,9 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 `void displayNumber(int number, bool leading_zeros)` – Same as above, but with the option for leading zeros.
 
-`void displayText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
+`void displayText(char text[])` – Displays a short alphanumeric string.
+
+`void scrollText(char text[], byte scroll_speed)` – Clears the display and starts scrolling an alphanumeric string at the specified speed. Scrolling begins off-screen and ends off-screen. No action is taken if text is already scrolling. Scroll speed presets include:
 
 * SLOW_SCROLL
 * NORM_SCROLL

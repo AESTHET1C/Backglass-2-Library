@@ -60,7 +60,23 @@ void displayNumber(int number, bool leading_zeros);
  *         [Optional] Should leading zeros be shown?
  */
 
-void displayText(char text[], byte scroll_speed);
+void displayText(char text[]);
+/*
+ * Displays an alphanumeric string on the display
+ *
+ * Text longer than 4 characters will be truncated.
+ * No action is taken if text is currently scrolling.
+ *
+ * Affects Display_Update, Display_Data[]
+ * INPUT:  String to be displayed
+ */
+
+void scrollNumber(int number, byte scroll_speed);
+/*
+ *
+ */
+
+void scrollText(char text[], byte scroll_speed);
 /*
  *
  */

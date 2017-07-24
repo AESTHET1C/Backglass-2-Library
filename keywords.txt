@@ -22,6 +22,8 @@ setVolume	KEYWORD2
 clearDisplay	KEYWORD2
 displayNumber	KEYWORD2
 displayText	KEYWORD2
+scrollNumber	KEYWORD2
+scrollText	KEYWORD2
 showNumberOfBalls	KEYWORD2
 setDecimalPoints	KEYWORD2
 getRemainingScrollCharacters	KEYWORD2
