@@ -78,6 +78,12 @@ void initAudio();
  *
  */
 
+void playTone(byte note, byte duration);
+void playTone(byte note, byte duration, byte voice, byte volume);
+/*
+ *
+ */
+
 void playAudio(const uint8_t audio_clip[]);
 void playAudio(const uint8_t audio_clip[], byte volume);
 /*

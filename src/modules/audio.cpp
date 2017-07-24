@@ -34,6 +34,53 @@ void initAudio() {
 	return;
 }
 
+void playTone(byte note, byte duration) {
+	return playTone(note, duration, DEFAULT_CHANNEL_VOICE, DEFAULT_CLIP_VOLUME);
+}
+
+void playTone(byte note, byte duration, byte voice, byte volume) {
+	byte Current_Channel = 0;
+
+	cli();
+
+	// Find first free track
+	while (Current_Channel < NUMBER_OF_CHANNELS) {
+		if (!(Channel_Enabled_Array[Current_Channel])) {
+			break;
+		}
+		else {
+			Current_Channel += 1;
+		}
+	}
+
+	// Return if all channels are in use
+	if (Current_Channel == NUMBER_OF_CHANNELS) {
+		sei();
+		return;
+	}
+
+	// Update channel configuration variables
+	Voice_Array[Current_Channel] = voice;
+	Volume_Array[Current_Channel] = (volume / 4);
+
+	// Update channel voice
+	uint8_t Current_Voice_Volume = scaleVolume(scaleVolume(volume, Global_Volume), MAX_VOICE_VOLUME);
+	TWI_Queue_Data[TWI_QUEUE_VOICE_OFFSET + Current_Channel] = ((Voice_Array[Current_Channel] & VOICE_MASK) | ((Current_Voice_Volume << 2) & VOLUME_MASK));
+	Voice_Update = true;
+
+	// Update channel note
+	TWI_Queue_Data[Current_Channel] = note;
+
+	// Initialize dummy queue structure for channel
+	Channel_Enabled_Array[Current_Channel] = true;
+	Channel_Pointer_Array[Current_Channel] = NULL_TERMINATOR;
+	Channel_Repeat_Array[Current_Channel] = false;
+	Channel_Note_Remaining_Array[Current_Channel] = duration;
+
+	sei();
+	return;
+}
+
 void playAudio(const uint8_t audio_clip[]) {
 	return queueAudioClip(audio_clip, false, DEFAULT_CLIP_VOLUME);
 }
