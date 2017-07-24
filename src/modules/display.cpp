@@ -159,7 +159,7 @@ void displayText(char text[], byte scroll_speed) {
 	return;
 }
 
-void displayNumberOfBalls(byte balls) {
+void showNumberOfBalls(byte balls) {
 	if (balls > 4) {
 		balls = 4;
 	}
@@ -186,7 +186,7 @@ void setDecimalPoints(byte decimal_data) {
 	return setDecimalPoints(a, b, c, d);
 }
 
-int getRemainingTextCharacters() {
+int getRemainingScrollCharacters() {
 	if (Display_Queue_Active) {
 		return (Display_Queue_Length - Display_Queue_Pointer);
 	}

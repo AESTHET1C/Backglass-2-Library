@@ -22,9 +22,9 @@ setVolume	KEYWORD2
 clearDisplay	KEYWORD2
 displayNumber	KEYWORD2
 displayText	KEYWORD2
-displayNumberOfBalls	KEYWORD2
+showNumberOfBalls	KEYWORD2
 setDecimalPoints	KEYWORD2
-getRemainingTextCharacters	KEYWORD2
+getRemainingScrollCharacters	KEYWORD2
 
 # EEPROM
 save	KEYWORD2
@@ -42,13 +42,13 @@ waitMillis	KEYWORD2
 #########################
 
 # Sensor + LED enums
+BUMP_0	LITERAL1
+BUMP_1	LITERAL1
+BUMP_2	LITERAL1
 RAMP	LITERAL1
 LOSE	LITERAL1
 FLIP_L	LITERAL1
 FLIP_R	LITERAL1
-BUMP_0	LITERAL1
-BUMP_1	LITERAL1
-BUMP_2	LITERAL1
 
 # Scrolling speeds
 FAST_SCROLL	LITERAL1

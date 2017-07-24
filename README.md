@@ -87,13 +87,13 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 * NORM_SCROLL
 * FAST_SCROLL
 
-`void displayNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
+`void showNumberOfBalls(byte balls)` – Overrides the four decimal points to show the given number of balls. The override is cancelled upon calling clearDisplay().
 
 `void setDecimalPoints(bool a, bool b, bool c, bool d)` – Overrides the four decimal points. The override is cancelled upon calling clearDisplay().
 
 `void setDecimalPoints(byte decimal_data)` – Same as above, but using a byte input rather than four booleans. LSB is right-most decimal point.
 
-`int getRemainingTextCharacters()` – Returns the remaining number of characters to scroll.
+`int getRemainingScrollCharacters()` – Returns the remaining number of characters to scroll.
 
 ### Serial
 

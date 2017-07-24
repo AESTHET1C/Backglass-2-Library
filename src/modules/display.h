@@ -65,7 +65,7 @@ void displayText(char text[], byte scroll_speed);
  *
  */
 
-void displayNumberOfBalls(byte balls);
+void showNumberOfBalls(byte balls);
 /*
  * Displays the number of remaining balls using decimal points on the display
  *
@@ -80,6 +80,6 @@ void displayNumberOfBalls(byte balls);
 void setDecimalPoints(bool a, bool b, bool c, bool d);
 void setDecimalPoints(byte decimal_data);
 
-int getRemainingTextCharacters();
+int getRemainingScrollCharacters();
 
 #endif
