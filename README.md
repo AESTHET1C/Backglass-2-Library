@@ -59,9 +59,9 @@ To add additional audio clips, place the clip's .inc file in the sketch folder a
 
 `void playAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip. Included audio clips are:
 
-* VECTREX
-* JAMMIN
-* COIN
+* VECTREX (3 channels)
+* JAMMIN (3 channels)
+* COIN (1 channel)
 
 `void playAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
 
