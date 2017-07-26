@@ -12,6 +12,7 @@
 #include "modules/timer1.h"
 #include "modules/eeprom.h"
 #include "modules/timing.h"
+#include "modules/hiscore.h"
 
 /////////////////////////
 // AVAILABLE FUNCTIONS
