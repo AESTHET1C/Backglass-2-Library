@@ -106,6 +106,11 @@ void setVolume(byte volume);
  *
  */
 
+bool audioPlaying();
+/*
+ *
+ */
+
 
 /////////////////////////
 // INTERNAl FUNCTIONS

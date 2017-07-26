@@ -127,6 +127,17 @@ void setVolume(byte volume) {
 	return;
 }
 
+bool audioPlaying() {
+	bool Playing = false;
+	for (byte Channel = 0; Channel < NUMBER_OF_CHANNELS; Channel++) {
+		if (Channel_Enabled_Array[Channel]) {
+			Playing = true;
+			break;
+		}
+	}
+	return Playing;
+}
+
 void queueAudioClip(const uint8_t audio_clip[], bool loop, byte volume) {
 	byte Number_Of_Tracks = pgm_read_byte(audio_clip++);
 	byte Current_Channel = 0;

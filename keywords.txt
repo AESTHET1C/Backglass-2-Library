@@ -18,6 +18,7 @@ playAudio	KEYWORD2
 loopAudio	KEYWORD2
 stopAudio	KEYWORD2
 setVolume	KEYWORD2
+audioPlaying	KEYWORD2
 
 # Display
 clearDisplay	KEYWORD2

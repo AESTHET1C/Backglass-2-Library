@@ -91,6 +91,8 @@ To add additional audio clips, place the clip's .h file in the sketch folder and
 
 `void setVolume(byte volume)` – Sets the maximum speaker volume. The default value is 255.
 
+`bool audioPlaying()` – Returns whether any audio is currently playing.
+
 ### Display
 
 `void clearDisplay()` – Clears the display and stops any scrolling text.
