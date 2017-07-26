@@ -74,9 +74,11 @@ To add additional audio clips, place the clip's .h file in the sketch folder and
 `void playAudio(uint8_t audio_clip[])` – Starts playback of the specified audio clip. Included audio clips are:
 
 * VECTREX (3 tracks)
+* GAME_OVER (2 tracks)
 * COIN (1 track)
 * MEGALOVANIA (4 tracks) (song)
 * JAMMIN (3 tracks) (song)
+* BUBBLEMAN (2 tracks) (song)
 
 `void playAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
 
