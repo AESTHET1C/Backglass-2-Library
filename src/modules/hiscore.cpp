@@ -23,12 +23,13 @@ char * getPlayerName() {
 		Player_Name[Current_Character] = getCharacter();
 
 		// Check that left flipper isn't pressed before continuing
+		waitMillis(FLIP_DEBOUNCE_TIME);
 		if (readSensor(FLIP_L)) {
 			while (readSensor(FLIP_L)) {
 				// Do nothing
 			}
-			waitMillis(FLIP_DEBOUNCE_TIME);
 		}
+		waitMillis(FLIP_DEBOUNCE_TIME);
 
 		Current_Character += 1;
 	}
