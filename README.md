@@ -76,6 +76,8 @@ To add additional audio clips, place the clip's .h file in the sketch folder and
 * VECTREX (3 tracks)
 * GAME_OVER (2 tracks)
 * COIN (1 track)
+* SWEEP_UP (1 track)
+* SWEEP_DOWN (1 track)
 * MEGALOVANIA (4 tracks) (song)
 * JAMMIN (3 tracks) (song)
 * BUBBLEMAN (2 tracks) (song)
