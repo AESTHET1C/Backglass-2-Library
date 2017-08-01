@@ -16,8 +16,8 @@
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-const uint8_t RAMP_SENSE_THRESH = 192;
-const uint8_t LOSE_SENSE_THRESH = 192;
+const uint8_t RAMP_SENSE_THRESH = 128;
+const uint8_t LOSE_SENSE_THRESH = 128;
 
 
 /////////////////////////
