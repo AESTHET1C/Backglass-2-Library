@@ -18,7 +18,7 @@
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-const uint8_t DEFAULT_MOTOR_SPEED = 127;
+const uint8_t DEFAULT_MOTOR_SPEED = 72;
 
 
 /////////////////////////

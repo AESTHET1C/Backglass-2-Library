@@ -41,7 +41,7 @@ typedef uint8_t byte;
 const byte DEFAULT_CHANNEL_VOICE =  0;
 const byte DEFAULT_CHANNEL_VOLUME = 255;  // Scales the volume of individual channels within an audio clip
 const byte DEFAULT_CLIP_VOLUME = 255;     // Scales the volume of all channels of an audio clip
-const byte DEFAULT_GLOBAL_VOLUME =  255;  // Scales the volume of all channels of all audio
+const byte DEFAULT_GLOBAL_VOLUME =  150;  // Scales the volume of all channels of all audio
 
 
 /////////////////////////
