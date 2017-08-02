@@ -80,6 +80,7 @@ To add additional audio clips, place the clip's .h file in the sketch folder and
 * SWEEP_DOWN (1 track)
 * MEGALOVANIA (4 tracks) (song)
 * JAMMIN (3 tracks) (song)
+* HAPPY (3 tracks) (song)
 * BUBBLEMAN (2 tracks) (song)
 * TETRIS (2 tracks) (song)
 * DIG_DUG (2 tracks) (song)
