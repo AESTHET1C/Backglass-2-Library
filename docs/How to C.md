@@ -1,7 +1,5 @@
 # How to C: The Basics of Programming Pinball
 
-**A quick note:** This document, along with TODO <https://github.com/AESTHET1C/Backglass-2-Library>.
-
 ## Getting started
 
 ### Some notes on terminology
