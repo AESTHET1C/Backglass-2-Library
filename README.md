@@ -82,6 +82,7 @@ To add additional audio clips, place the clip's .h file in the sketch folder and
 * JAMMIN (3 tracks) (song)
 * BUBBLEMAN (2 tracks) (song)
 * TETRIS (2 tracks) (song)
+* DIG_DUG (2 tracks) (song)
 
 `void playAudio(uint8_t audio_clip[], byte volume)` – Same as above, but with the ability to specify playback volume. Default volume is 255.
 
