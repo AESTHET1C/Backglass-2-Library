@@ -1,5 +1,9 @@
 #include "io.h"
 
+// Reflectance sensor threshold values
+byte Ramp_Sense_Thresh = DEFAULT_RAMP_SENSE_THRESH;
+byte Lose_Sense_Thresh = DEFAULT_LOSE_SENSE_THRESH;
+
 void initIO() {
 	PORTD |= ((1 << FLIP_L_PIN) | (1 << FLIP_R_PIN));                     // Enable pull-ups
 	PORTC |= ((1 << BUMP_0_PIN) | (1 << BUMP_1_PIN) | (1 << BUMP_2_PIN));
@@ -11,9 +15,9 @@ void initIO() {
 bool readSensor(sensor_t sensor) {
 	switch (sensor) {
 		case RAMP:
-			return (Ramp_Sense_Value <= RAMP_SENSE_THRESH);
+			return (Ramp_Sense_Value <= Ramp_Sense_Thresh);
 		case LOSE:
-			return (Lose_Sense_Value <= LOSE_SENSE_THRESH);
+			return (Lose_Sense_Value <= Lose_Sense_Thresh);
 		case FLIP_L:
 			return (!!((PIND >> FLIP_L_PIN) & 1));
 		case FLIP_R:

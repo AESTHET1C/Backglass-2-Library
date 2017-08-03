@@ -10,14 +10,15 @@
 #ifndef io
 #define io
 
+typedef uint8_t byte;
 #include "adc.h"
 
 /////////////////////////
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-const uint8_t RAMP_SENSE_THRESH = 128;
-const uint8_t LOSE_SENSE_THRESH = 128;
+const uint8_t DEFAULT_RAMP_SENSE_THRESH = 72;
+const uint8_t DEFAULT_LOSE_SENSE_THRESH = 72;
 
 
 /////////////////////////
