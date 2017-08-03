@@ -1,8 +1,8 @@
 #include "io.h"
 
 // Reflectance sensor threshold values
-byte Ramp_Sense_Thresh = DEFAULT_RAMP_SENSE_THRESH;
-byte Lose_Sense_Thresh = DEFAULT_LOSE_SENSE_THRESH;
+uint8_t Ramp_Sense_Thresh = DEFAULT_RAMP_SENSE_THRESH;
+uint8_t Lose_Sense_Thresh = DEFAULT_LOSE_SENSE_THRESH;
 
 void initIO() {
 	PORTD |= ((1 << FLIP_L_PIN) | (1 << FLIP_R_PIN));                     // Enable pull-ups

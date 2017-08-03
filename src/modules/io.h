@@ -10,7 +10,6 @@
 #ifndef io
 #define io
 
-typedef uint8_t byte;
 #include "adc.h"
 
 /////////////////////////
