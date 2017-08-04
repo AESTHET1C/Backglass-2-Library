@@ -18,8 +18,8 @@ The *Arduino IDE* is the software that you write and upload code in.
 
 ### Setting up the Arduino IDE
 
-1. Download and install the Arduino IDE from [here.]<https://www.arduino.cc/en/Main/Software>
-2. Download and install the Backglass 2 User Library from [here.]<https://github.com/AESTHET1C/Backglass-2-Library> Scroll down a small amount for installation instructions.
+1. Download and install the Arduino IDE from [here.](https://www.arduino.cc/en/Main/Software)
+2. Download and install the Backglass 2 User Library from [here.](https://github.com/AESTHET1C/Backglass-2-Library) Scroll down a small amount for installation instructions.
 3. Verify the Arduino Uno board is selected. `Tools > Board: "Arduino/Genduino Uno"`
 4. Plug in the Backglass 2 board and install any drivers (if needed).
 5. Verify the Arduino IDE can talk with the Backglass 2. `Tools > Port` and select the port that appears.
@@ -193,7 +193,7 @@ if ((Score > 100) || ((Cheat_Mode) && (Score > 50))) {
 
 To make coding for the Backglass 2 board easier, we've written a large amount of code that you can use in your program. This collection of code (called a "library") automates some tedious, complicated, and often-used tasks that a standard pinball game might require. This section covers some of the functions provided by this library.
 
-Additional functions and details can be found in the documentation for the Library, found [here.]<TODO>
+Additional functions and details can be found in the documentation for the Library, found [here.](https://github.com/AESTHET1C/Backglass-2-Library/blob/master/README.md)
 
 `initBackglass()` sets up a lot of behind-the-scenes code for the pinball machine and the Library. This function must be the first line of your `setup()` function.
 

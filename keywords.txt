@@ -30,6 +30,13 @@ showNumberOfBalls	KEYWORD2
 setDecimalPoints	KEYWORD2
 getRemainingScrollCharacters	KEYWORD2
 
+# High Scores
+
+getHighScorePosition	KEYWORD2
+getPlayerName	KEYWORD2
+insertHighScore	KEYWORD2
+resetHighScores	KEYWORD2
+
 # EEPROM
 saveNumber	KEYWORD2
 saveText	KEYWORD2

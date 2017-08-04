@@ -125,9 +125,19 @@ clearDisplay()`.
 
 `int getRemainingScrollCharacters()` – Returns the remaining number of characters to scroll.
 
+### High Scores
+
+`byte getHighScorePosition(int score)` – Reads through the saved high scores and finds the position where the given score fits. If the new score is too low, `10` is returned.
+
+`char * getPlayerName()` – Gets the player's name, using the flippers as input. After entering a name, left flipper confirms, while right flipper starts over.
+
+`void insertHighScore(byte position, int score, char name[])` – Saves a new high score to the specified position in EEPROM. All lower high scores are shifted to make room.
+
+`void resetHighScores()` – Resets all saved high scores to 0, and saved high score names to "AAAA".
+
 ### Serial
 
-**TODO**
+**Coming at some point in the future**
 
 ### Storage
 
