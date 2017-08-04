@@ -2,6 +2,15 @@
 
 char Player_Name[MAX_CHARACTERS + 1];
 
+byte getHighScorePosition(int score) {
+	for (byte Position = 0; Position < NUMBER_OF_SCORES; Position++) {
+		if (score >= loadNumber(HIGH_SCORE[Position])) {
+			return Position;
+		}
+	}
+
+	return NUMBER_OF_SCORES;
+}
 
 char * getPlayerName() {
 	Restart:
@@ -43,6 +52,34 @@ char * getPlayerName() {
 	}
 
 	return Player_Name;
+}
+
+void insertHighScore(byte position, int score, char name[]) {
+
+	// Skip if position is too high
+	if (position >= NUMBER_OF_SCORES) {
+		return;
+	}
+
+	// Shift old, lower high scores down
+	for (byte Current_Position = (NUMBER_OF_SCORES - 1); Current_Position > position; Current_Position--) {
+		saveNumber(HIGH_SCORE[Current_Position], loadNumber(HIGH_SCORE[Current_Position - 1]));
+		saveText(HIGH_SCORE_NAME[Current_Position], loadText(HIGH_SCORE_NAME[Current_Position - 1]));
+	}
+
+	// Save new high score data
+	saveText(HIGH_SCORE_NAME[position], name);
+	saveNumber(HIGH_SCORE[position], score);
+
+	return;
+}
+
+void resetHighScores() {
+	for (byte Position = 0; Position < NUMBER_OF_SCORES; Position++) {
+		saveNumber(HIGH_SCORE[Position], 0);
+		saveText(HIGH_SCORE_NAME[Position], "AAAA");
+	}
+	return;
 }
 
 char getCharacter() {

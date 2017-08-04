@@ -13,6 +13,7 @@
 #include <avr/pgmspace.h>
 #include "ascii.inc"
 #include "display.h"
+#include "eeprom.h"
 #include "io.h"
 #include "timer1.h"
 #include "timing.h"
@@ -24,7 +25,7 @@ typedef uint8_t byte;
 // CONFIGURATION VARIABLES
 /////////////////////////
 
-// Length of desired string
+// Length of desired string for inputting name
 const unsigned int MAX_CHARACTERS = NUMBER_OF_DISPLAY_DIGITS;
 
 // Blink timing
@@ -32,9 +33,9 @@ const unsigned int BLINK_ON_TIME = 100;
 const unsigned int BLINK_OFF_TIME = 100;
 
 // Character selection timing
-const unsigned int REPEAT_RATE_SLOW = 400;
-const unsigned int REPEAT_RATE_FAST = 250;
-const byte REPEAT_THRESHOLD = 3;
+const unsigned int REPEAT_RATE_SLOW = 300;
+const unsigned int REPEAT_RATE_FAST = 200;
+const byte REPEAT_THRESHOLD = 2;
 
 // Debounce parameters
 const unsigned FLIP_DEBOUNCE_TIME = 150;
@@ -81,6 +82,11 @@ const char CHARACTER_LIST[] = {
 // AVAILABLE FUNCTIONS
 /////////////////////////
 
+byte getHighScorePosition(int score);
+/*
+ *
+ */
+
 char * getPlayerName();
 /*
  * Gets the player's name and returns a string
@@ -95,6 +101,16 @@ char * getPlayerName();
  *
  * Affects Player_Name[]
  * OUTPUT: Pointer to a character array containing the player name
+ */
+
+void insertHighScore(byte position, int score, char name[]);
+/*
+ *
+ */
+
+void resetHighScores();
+/*
+ *
  */
 
 
